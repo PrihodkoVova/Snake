@@ -34,6 +34,7 @@ namespace Snake
         }
         public void Draw()
         {
+            Console.ForegroundColor = ConsoleColor.White;
             foreach (Figure f in wallList)
             {
                 f.Draw();

@@ -9,12 +9,20 @@ namespace Snake
     class Snake : Figure
     {
         private Direction direction;
+        public int Points
+        {
+            get
+            {
+                return pList.Count;
+            }
+        }
         public Snake(Point tail, int length, Direction _direction)
         {
             direction = _direction;
             pList = new List<Point>();
             for (int i = 0; i < length; i++)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Point p = new Point(tail);
                 p.Move(i, direction);
                 pList.Add(p);
@@ -23,6 +31,7 @@ namespace Snake
 
         public void Move()
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             Point tail = pList.First();
             pList.Remove(tail);
             Point head = GetNextPoint();
@@ -30,10 +39,12 @@ namespace Snake
 
             tail.Clear();
             head.Draw();
-        }
 
+        }
+        
         public Point GetNextPoint()
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             Point next = new Point(pList.Last());
             next.Move(1, direction);
             return next;
@@ -64,13 +75,13 @@ namespace Snake
         }
         public void ChangeDirection(ConsoleKey key)
         {
-            if (key == ConsoleKey.LeftArrow)
+            if (key == ConsoleKey.LeftArrow && direction!=Direction.RIGHT)
                 direction = Direction.LEFT;
-            else if (key == ConsoleKey.RightArrow)
+            else if (key == ConsoleKey.RightArrow && direction != Direction.LEFT)
                 direction = Direction.RIGHT;
-            else if (key == ConsoleKey.UpArrow)
+            else if (key == ConsoleKey.UpArrow && direction != Direction.DOWN)
                direction = Direction.UP;
-            else if (key == ConsoleKey.DownArrow)
+            else if (key == ConsoleKey.DownArrow && direction != Direction.UP)
                 direction = Direction.DOWN;
         }
     }
