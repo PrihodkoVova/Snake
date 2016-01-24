@@ -12,15 +12,16 @@ namespace Snake
         static void Main(string[] args)
         {
             Console.Title = "Snake";
-            Console.SetBufferSize(80, 25);
+            Console.SetBufferSize(80, 30);
+            Console.SetWindowSize(80, 30);
 
-            Walls wall = new Walls(80, 25, '+');
+            Walls wall = new Walls(80, 30, '+');
             wall.Draw();
             Point p = new Point(3,3,'*');
             Snake snake = new Snake(p, 4, Direction.RIGHT);
             snake.Draw();
 
-            FoodCreator foodCreator = new FoodCreator(80, 25, '$');
+            FoodCreator foodCreator = new FoodCreator(80, 30, '$');
             Point food = foodCreator.CreateFood();
             Console.ForegroundColor = ConsoleColor.Yellow;
             food.Draw();
