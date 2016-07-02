@@ -12,6 +12,7 @@ namespace Snake
         static void Main(string[] args)
         {
             Console.Title = "Snake";
+            Console.WriteLine("Hello");
             Console.SetBufferSize(80, 30);
             Console.SetWindowSize(80, 30);
 
